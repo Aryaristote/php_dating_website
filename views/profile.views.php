@@ -1,7 +1,6 @@
 <?php 
   $title = 'Profile';
-  require './partials/_menu_log.php';
-  include './partials/_header.php' 
+  require './partials/_menu.php';
 ?>
 <!-- ==========Preloader========== -->
     <div class="preloader">
@@ -34,7 +33,7 @@
         <div class="container">
             <div class="content">
                 <h2 class="title extra-padding">
-                    <?= $_SESSION['pseudo'] ?>
+                    <?= e($user->pseudo) ?>
                 </h2>
                 <ul class="breadcrumb-list extra-padding">
                     <li>
@@ -49,7 +48,7 @@
                 </ul>
                 <div class="right">
                     <a href="user_setting.php" class="custom-button">
-                        <i class="fa fa-cloudversify"></i> Edit profile
+                        <i class="fa fa-edit"></i> Edit profile
                     </a>
                 </div>
             </div>
@@ -68,12 +67,13 @@
                             <div class="top-bg"></div>
                             <div class="p-inner-content">
                                 <div class="profile-img">
-                                    <img src="assets/images/profile/profile-user.png" alt="">
+                                    <img src="<?= get_avatar_url($user->email) ?>" alt="Profile image for <?= e($user->pseudo) ?>">
                                     <div class="active-online"></div>
                                 </div>
                                 <h5 class="name">
-                                    Albert Don
+                                    <?= e($user->name) ?><br>
                                 </h5>
+                                <small><a href="mailto:<?= e($user->email) ?>"><?= e($user->email) ?></a></small>
                                 <ul class="p-b-meta-one">
                                     <li>
                                         <span>21 Years Old</span>

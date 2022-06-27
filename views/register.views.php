@@ -1,7 +1,5 @@
 <?php 
-  $title = 'Register';
-  require './partials/_menu.php';
-  include './partials/_header.php' 
+  $title = 'Register'; 
 ?>
 
 <!-- ==========Preloader========== -->
@@ -37,15 +35,13 @@
         </div>
         <div class="col-lg-7">
           <div class="log-reg-inner">
-          
-            <div class="section-header">
-              <?php include('partials/_errors.php') ?>
-            </div>
-
             <div class="section-header">
               <p>Let's create your profile! Just fill in the fields below, and we’ll get a new account.</p>
             </div>
             <div class="main-content">
+              <div class="section-header">
+                <?php include('partials/_errors.php') ?>
+              </div>
               <form data-parsley-validate action="#" method="POST">
                 <div class="form-group">
                   <label for="name">Username*</label>

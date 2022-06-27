@@ -8,6 +8,41 @@
                 return htmlspecialchars($string);
             }
         }
+    } 
+
+    // Function to get session'data
+    if(!function_exists('get_session')){
+        function get_session($key){
+            if($key){
+                return !empty($_SESSION[$key]) ? e($_SESSION[$key]) : null;
+                // If the session is not empty return session key else return null;
+            }
+        }
+    }
+
+    // Check is the user has logged in, to change menu option show up
+    // if(!function_exists('is_logged_in')){
+    //     function is_logged_in(){
+    //          if(isset($_SESSION['user_id']) || isset($_SESSION['pseudo']));
+    //     }
+    // }
+
+    // Create avatar for user and link to the user email
+    if(!function_exists('get_avatar_url')){
+        function get_avatar_url($email){
+            return "https://www.gravatar.com/avatar/".md5(strtolower(trim(e($email))));
+        }
+    }
+
+    if(!function_exists('find_user_by_id')){
+        function find_user_by_id($id){
+            global $db;
+            $q = $db->prepare("SELECT name, pseudo, email, city, country, twitter, github, sex, bio FROM users WHERE id= ?");
+            $q->execute([$id]);
+            $data = $q->fetch(PDO::FETCH_OBJ);
+            $q->closeCursor();
+            return $data;
+        }
     }
 
     //Check if the input are not empty and remove space character

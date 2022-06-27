@@ -23,7 +23,7 @@
         <link rel="shortcut icon" href="../assets/images/favicon.png" type="image/x-icon">
 
         <title>
-            <?php echo isset($title) ? $title : 'Payemba'; ?>
+            <?php echo isset($title) ? $title : 'Someone'; ?>
         </title>
     </head>
 
@@ -44,4 +44,4 @@
         <i class="fas fa-angle-up"></i>
     </a><br><br>
     <!-- ==========Overlay========== -->
-    <?php include 'partials/_flash.php' ?>
+    

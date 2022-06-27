@@ -1,9 +1,33 @@
-<?php 
-  $title = 'Register';
-  require './partials/_menu.php';
-  include './partials/_header.php' 
-?>
-<!-- ==========Preloader========== -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/animate.css">
+  <link rel="stylesheet" href="assets/css/flaticon.css">
+  <link rel="stylesheet" href="assets/css/magnific-popup.css">
+  <link rel="stylesheet" href="assets/css/odometer.css">
+  <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
+  <link rel="stylesheet" href="assets/css/owl.theme.default.min.css">
+  <link rel="stylesheet" href="assets/css/nice-select.css">
+  <link rel="stylesheet" href="assets/css/jquery.animatedheadline.css">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+  <!-- <link rel="stylesheet" href="assets/css/dark.css"> -->
+
+  <link rel="shortcut icon" href="assets/images/favicon.png" type="image/x-icon">
+
+  <title><?= $title = 'Login' ?></title>
+
+
+</head>
+
+<body>
+  <!-- ==========Preloader========== -->
   <div class="preloader">
     <div class="preloader-inner">
       <div class="preloader-icon">
@@ -14,39 +38,37 @@
   </div>
   <!-- ==========Preloader========== -->
 
-
-
   <!-- ========== Login & Registation Section ========== -->
   <section class="log-reg">
     <div class="top-menu-area">
       <div class="container">
         <div class="row">
-          <div class="col-lg-10">
-            <a href="index.php" class="backto-home"><i class="fas fa-chevron-left"></i> Back to Home</a>
+          <div class="col-lg-5">
+            <a href="index.php" class="backto-home"><i class="fas fa-chevron-left"></i> Home</a>
           </div>
-          <div class="col-lg-2">
+          <div class="col-lg-7 ">
             <div class="logo">
-              <img src="../assets/images/logo2.png" alt="logo">
+              <img src="../assets/images/logo/someone_logo.png" alt="logo" width="70">
             </div>
           </div>
         </div>
       </div>
     </div>
     <div class="container">
-      <div class="row justify-content-center">
+      <div class="row justify-content-end">
         <div class="image image-log">
         </div>
         <div class="col-lg-7">
           <div class="log-reg-inner">
-            <div class="section-header inloginp" style="padding: 0 1em!important;">
-              <h4 class="title">
-                Welcome to PEYAMBA
-              </h4>
-            </div>
-            <div class="section-header">
-              <?php include('partials/_errors.php') ?>
+            <div class="section-header inloginp">
+              <h2 class="title">
+                Find love in 3 simple click...
+              </h2>
             </div>
             <div class="main-content inloginp">
+              <div class="col-lg-12">
+                <?php include './partials/_flash.php'; ?>
+              </div>
               <form action="#" method="POST">
                 <div class="form-group">
                   <label for="">Your Address or Pseudo</label>
@@ -85,6 +107,7 @@
 
   <!-- ========== Login & Registation Section ========== -->
   <?php require './partials/_footer.php' ?>
+
 
 <!-- Mirrored from pixner.net/peyamba/peyamba/login.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 11 Feb 2022 19:12:12 GMT -->
 </html>

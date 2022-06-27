@@ -24,7 +24,7 @@
                 $_SESSION['user_id'] = $user->id;
                 $_SESSION['pseudo'] = $user->pseudo;
 
-                redirect('profile.php');
+                redirect('profile.php?id='.$user->id);
             }else{
                 set_flash('Wrong user name or Password','danger');
                 save_input_data();
