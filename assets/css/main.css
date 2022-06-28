@@ -1138,6 +1138,25 @@ input[type=submit] {
           box-shadow: 1px 10px 20px 0px rgba(12, 78, 165, 0.43);
 }
 
+.submit-btn1{
+  background-image: -o-linear-gradient(284deg, #f22876 0%, #942dd9 100%);
+  background-image: linear-gradient(166deg, #f22876 0%, #942dd9 100%);
+  -webkit-box-shadow: 0.872px 9.962px 20px 0px rgba(12, 78, 165, 0.3);
+          box-shadow: 0.872px 9.962px 20px 0px rgba(12, 78, 165, 0.3);
+  padding: 11px 35px;
+  font-weight: 600;
+  color: #ffffff;
+  border-radius: 5px;
+  display: inline-block;
+  border: 0px;
+  cursor: pointer;
+}
+.submit-btn1:hover {
+  color: #fff;
+  -webkit-box-shadow: 1px 10px 20px 0px rgba(12, 78, 165, 0.43);
+          box-shadow: 1px 10px 20px 0px rgba(12, 78, 165, 0.43);
+}
+
 .preloader {
   position: fixed;
   top: 0;

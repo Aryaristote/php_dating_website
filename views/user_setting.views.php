@@ -170,6 +170,7 @@ require './partials/_menu.php';
                             <div class="p-inner-content">
                                 <div class="profile-img">
                                     <img src="../assets/images/profile/profile-user.png" alt="">
+                                    
                                     <div class="active-online"></div>
                                 </div>
                             </div>
@@ -208,24 +209,57 @@ require './partials/_menu.php';
                     <div class="header">
                         About your Profile
                     </div>
-                    <form data-parsley-validate action="#" method="POST">
-                        <div class="form-group">
-                            <label for="name">Username*</label>
-                            <input require="required" type="text" name="name" class="my-form-control" placeholder="Enter Your name">
+                    <form data-parsley-validation method="post" class="content container">
+                        <div class=" col-md-12">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>Profile Name</label>
+                                    <input type="text" id="username" name="username" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label>Ville</label>
+                                    <input type="text" id="username" name="username" required>
+                                </div>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="name">Pseudo*</label>
-                            <input require="required" type="text" name="pseudo" class="my-form-control" placeholder="Enter Your speudo">
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>Pays</label>
+                                    <input type="text" id="username" name="username" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="">Sex</label>
+                                    <select name="" id="" required="required">
+                                        <option value="" disabled selected>Select options</option>
+                                        <option value="B">Man</option>
+                                        <option value="G">Woman</option>
+                                    </select>
+                                </div>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="email">Email Address*</label>
-                            <input type="email" value="email" name="email" id="email" class="my-form-control" placeholder="Enter Your Email">
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>Twitter</label>
+                                    <input type="text" id="username" name="username" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label>Github</label>
+                                    <input type="text" id="username" name="username" required>
+                                </div>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="password">Password*</label>
-                            <input type="password" id="password_confirm" name="password" class="my-form-control" placeholder="Enter Your Password">
+                        <div class="col-md-12">
+                                <label for="">Biography*</label>
+                                <textarea rows="30" name="" placeholder="Write a little description about you..."></textarea>
+                        </div><br>
+                        <div class="col-md-12">
+                            <div class="row" style="width: 102%">
+                                <a href="profile.php" class="col-md-6">Discard All</a>
+                                <input type="submit" class="col-md-6 submit-btn1">
+                            </div>
                         </div>
-                        <input type="submit" class="custom-button" value="Register" name="register">
                     </form>
                     <!-- <form data-parsley-validation method="post" class="content">
                         <div class="row">
