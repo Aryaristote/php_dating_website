@@ -17,8 +17,19 @@
                     <a class="<?= ($activePage == 'index') ? 'active':''; ?>" href="index.php">Home</a>
                 </li>
                 <?php if(isset($_SESSION['user_id']) || isset($_SESSION['pseudo'])): ?>
-                    <li><a href="profile.php" class="<?= ($activePage == 'profile') ? 'active':''; ?>">Profile</a></li>
-                    <button class="custom-button"><a href="logout.php"><i class="fa fa-logout"></i> Log out</a></button>
+                    <li></li>
+                    <div class="dropdown">
+                        <button type="button" class="custom-button btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Profile
+                        </button>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="profile.php">Profile</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="logout.php"><i class="fa fa-logout"></i> Log out</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Another action</a>
+                        </div>
+                    </div>
                 <?php else: ?>
                     <li><a class="<?= ($activePage == 'login') ? 'active':''; ?>" href="login.php">Login</a></li>
                     <li><a class="<?= ($activePage == 'register') ? 'active':''; ?>" href="register.php">Sign Up</a></li>

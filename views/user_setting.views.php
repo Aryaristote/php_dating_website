@@ -1,6 +1,6 @@
 <?php
-$title = 'Edit Profile';
-require './partials/_menu.php';
+    $title = 'Edit Profile';
+    require './partials/_menu.php';
 ?>
 <!-- ==========Preloader========== -->
 <div class="preloader">
@@ -163,7 +163,10 @@ require './partials/_menu.php';
                 <div class="page-title">
                     Profile Info
                 </div>
-                <div class="row">
+                <div class="col-lg-12">
+                    <?php include './partials/_flash.php '?>
+                </div>
+                <!-- <div class="row">
                     <div class="col-lg-6">
                         <div class="profile-about-box">
                             <div class="top-bg"></div>
@@ -204,63 +207,83 @@ require './partials/_menu.php';
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <div class="input-info-box mt-30">
                     <div class="header">
                         About your Profile
                     </div>
-                    <form data-parsley-validation method="post" class="content container">
-                        <div class=" col-md-12">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <label>Profile Name</label>
-                                    <input type="text" id="username" name="username" required>
-                                </div>
-                                <div class="col-md-6">
-                                    <label>Ville</label>
-                                    <input type="text" id="username" name="username" required>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <label>Pays</label>
-                                    <input type="text" id="username" name="username" required>
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="">Sex</label>
-                                    <select name="" id="" required="required">
-                                        <option value="" disabled selected>Select options</option>
-                                        <option value="B">Man</option>
-                                        <option value="G">Woman</option>
-                                    </select>
+                    <?php if(!empty($_GET['id']) && $_GET['id'] === get_session('user_id')): ?>
+                        <!-- If you edit the url it's hide the edit profile fomm -->
+                        <form method="POST"  class="content container">
+                            <div class=" col-md-12">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label>Profile Pseudo</label>
+                                        <input type="text" id="pseudo" value="<?= get_input('name') ? get_input('peudo'): e($user->pseudo) ?>" name="pseudo" >
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label>Profile Name</label>
+                                        <input type="text" id="username" value="<?= get_input('name') ? get_input('name'): e($user->name) ?>" name="name" >
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <label>Twitter</label>
-                                    <input type="text" id="username" name="username" required>
-                                </div>
-                                <div class="col-md-6">
-                                    <label>Github</label>
-                                    <input type="text" id="username" name="username" required>
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label for="">Sex</label>
+                                        <select name="sex" id="" >
+                                            <option value="" disabled selected>Select options</option>
+                                            <option value="Man" <?= $user->sex == "Man" ? "selected" : "" ?> >Man</option>
+                                            <option value="Woman" <?= $user->sex == "Woman" ? "selected" : "" ?>>Woman</option>
+                                        </select>
+                                    </div>
+                                    <div class="own-checkbox col-md-6">
+                                        <small style="color: #333" for="">Are you single ?</small>
+                                        <label class="toggler-wrapper style-3">
+                                            <input type="checkbox" id="checkbox" name="available_for_date" /> <!-- $user->available_for_date ? "checked" : "" to set a default value -->
+                                            <div class="toggler-slider">
+                                                <div class="toggler-knob"></div>
+                                            </div>
+                                        </label>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-md-12">
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label>Country</label>
+                                        <input type="text" value="<?= get_input('country') ?: e($user->country) ?>" id="username" name="country" >
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label>Town</label>
+                                        <input type="text" id="username" value="<?= get_input('city') ?: e($user->city) ?>" value="<?= e($user->city) ?>" name="city" >
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label>Twitter</label>
+                                        <input type="text" id="username" value="<?= e($user->twitter) ?>" name="twitter">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label>Github</label>
+                                        <input type="text" id="username" value="<?= e($user->github) ?>" name="github">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
                                 <label for="">Biography*</label>
-                                <textarea rows="30" name="" placeholder="Write a little description about you..."></textarea>
-                        </div><br>
-                        <div class="col-md-12">
-                            <div class="row" style="width: 102%">
-                                <a href="profile.php" class="col-md-6">Discard All</a>
-                                <input type="submit" class="col-md-6 submit-btn1">
+                                <textarea rows="3" name="bio" placeholder="Write a little description about you..."><?= e($user->bio) ?></textarea>
+                            </div><br>
+                            <div class="col-md-12">
+                                <div class="row" style="width: 102%">
+                                    <a href="profile.php" class="col-md-6">Discard All</a>
+                                    <input type="submit" name="update" class="col-md-6 submit-btn1">
+                                </div>
                             </div>
-                        </div>
-                    </form>
+                        </form>
+                    <?php endif; ?>
                     <!-- <form data-parsley-validation method="post" class="content">
                         <div class="row">
                             <div class="col-md-6">

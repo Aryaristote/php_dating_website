@@ -206,6 +206,9 @@
                                 </a>
                             </li>
                         </ul>
+                        <div class="col-lg-12">
+                            <?php include './partials/_flash.php '?>
+                        </div>
                         <div class="info-box">
                             <div class="header">
                                 <h4 class="title">
@@ -219,15 +222,16 @@
                                             Name
                                         </span>
                                         <span>
-                                            Albert Don
+                                        <?= e($user->pseudo. " ".$user->name) ?>
                                         </span>
                                     </li>
                                     <li>
                                         <span>
-                                            Birthday
+                                            Account Creation date
                                         </span>
                                         <span>
-                                            1998-01-19
+                                            <!-- <?= $user->created_at ?> -->
+                                            Empty ************
                                         </span>
                                     </li>
                                     <li>
@@ -235,15 +239,7 @@
                                             I am a
                                         </span>
                                         <span>
-                                            Man
-                                        </span>
-                                    </li>
-                                    <li>
-                                        <span>
-                                            Looking for a
-                                        </span>
-                                        <span>
-                                            Woman
+                                            <?= $user->sex ?>
                                         </span>
                                     </li>
                                     <li>
@@ -251,25 +247,30 @@
                                             Marital status
                                         </span>
                                         <span>
-                                            single
+                                            <!-- <?= $user->available_for_date ?> -->
+                                            Empty***************
                                         </span>
                                     </li>
+                                    <?php if($user->country): ?>
                                     <li>
                                         <span>
                                             Country
                                         </span>
                                         <span>
-                                            France
+                                        <?= $user->country ? e($user->country): 'Not Set' ?>
                                         </span>
                                     </li>
+                                    <?php endif; ?>
+                                    <?php if($user->city): ?>
                                     <li>
                                         <span>
                                             City
                                         </span>
                                         <span>
-                                            Paris
+                                        <?= $user->city ? e($user->city): 'Not Set'?>
                                         </span>
                                     </li>
+                                    <?php endif; ?>
                                 </ul>
                             </div>
                         </div>
@@ -281,24 +282,36 @@
                             </div>
                             <div class="content">
                                 <p class="text">
-                                    I don`t like talk too much to be honest and especially about myself. I am man of actions, I do a lot of sports, I adore to travel and to see the world.
+                                    <?= $user->bio ? nl2br(e($user->bio)) : 'Not Set' ?>
                                 </p>
                             </div>
                         </div>
                         <div class="info-box">
                             <div class="header">
                                 <h4 class="title">
-                                    Lifestyle
+                                    Lifestyle & Social media
                                 </h4>
                             </div>
                             <div class="content">
                                 <ul class="infolist">
                                     <li>
                                         <span>
-                                            Interests
+                                            Twitter
                                         </span>
                                         <span>
-                                            Billiards
+                                            <?=
+                                                $user->twitter ? '<a href="//twitter.com/'.e($user->twitter).'">@'.e($user->twitter).'</a>' : '';
+                                            ?>
+                                        </span>
+                                    </li>
+                                    <li>
+                                        <span>
+                                            GitHub
+                                        </span>
+                                        <span>
+                                            <?=
+                                                $user->github ? '<a href="//github.com/'.e($user->github).'">@'.e($user->github).'</a>' : '';
+                                            ?>
                                         </span>
                                     </li>
                                     <li>
@@ -387,7 +400,6 @@
                                 </ul>
                             </div>
                         </div>
-
                     </div>
                 </div>
                 <div class="col-xl-3 col-lg-5 col-md-7">
