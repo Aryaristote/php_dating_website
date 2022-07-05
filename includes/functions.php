@@ -29,8 +29,8 @@
 
     // Create avatar for user and link to the user email
     if(!function_exists('get_avatar_url')){
-        function get_avatar_url($email){
-            return "https://www.gravatar.com/avatar/".md5(strtolower(trim(e($email))));
+        function get_avatar_url($email, $size = 50){
+            return "https://www.gravatar.com/avatar/".md5(strtolower(trim(e($email))))."?s=".$size;
         }
     }
 

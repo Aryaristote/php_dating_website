@@ -4314,6 +4314,7 @@ input[type=submit] {
   top: -60px;
   z-index: 9;
 }
+
 .profile-section .left-profile-area .profile-about-box .p-inner-content .profile-img img {
   border-radius: 50%;
 }
@@ -8964,3 +8965,11 @@ input[type=submit] {
   color: #fff;
   padding: 12px 10px 12px;
 }
+
+/* Navbar dropdown codes */
+
+.header-section .header-wrapper .menu .dropdown a img{
+  border-radius: 50%;
+}
+
+/* Navbar dropdown codes */

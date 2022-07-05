@@ -67,7 +67,7 @@
                             <div class="top-bg"></div>
                             <div class="p-inner-content">
                                 <div class="profile-img">
-                                    <img src="<?= get_avatar_url($user->email) ?>" alt="Profile image for <?= e($user->pseudo) ?>">
+                                    <img src="<?= get_avatar_url(get_session('email'), 120) ?>" alt="Profile image for <?= get_session('email') ?>">
                                     <div class="active-online"></div>
                                 </div>
                                 <h5 class="name">

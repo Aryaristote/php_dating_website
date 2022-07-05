@@ -17,11 +17,10 @@
                     <a class="<?= ($activePage == 'index') ? 'active':''; ?>" href="index.php">Home</a>
                 </li>
                 <?php if(isset($_SESSION['user_id']) || isset($_SESSION['pseudo'])): ?>
-                    <li></li>
                     <div class="dropdown">
-                        <button type="button" class="custom-button btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Profile
-                        </button>
+                        <a type="button" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <img src="<?= get_avatar_url(get_session('email')) ?>" alt="Profile image for <?= get_session('speudo') ?>">
+                        </a>
                         <div class="dropdown-menu">
                             <a class="dropdown-item" href="profile.php">Profile</a>
                             <div class="dropdown-divider"></div>
