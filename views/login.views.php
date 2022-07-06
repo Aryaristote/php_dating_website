@@ -69,6 +69,7 @@
               <div class="col-lg-12">
                 <?php include './partials/_flash.php'; ?>
               </div>
+              
               <form action="#" method="POST">
                 <div class="form-group">
                   <label for="">Your Address or Pseudo</label>

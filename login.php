@@ -10,17 +10,18 @@
     if(isset($_POST['login'])){
         if(not_empty(['identifiant', 'password'])){
             extract($_POST);
-            $q = $db->prepare('SELECT id, pseudo, email FROM users WHERE (pseudo = :identifiant OR email = :identifiant) AND password = :password');
+            
+            $q = $db->prepare('SELECT id, pseudo, password AS hashed_password email FROM 
+                                users WHERE (pseudo = :identifiant OR email = :identifiant) AND active = : "1"');
             $q->execute([
                 'identifiant' => $identifiant,
-                'password' => sha1($password)
             ]);
 
-            $UserhasbeenFound = $q->rowCount();
-            if($UserhasbeenFound){
+            $user = $q->fetch(PDO::FETCH_OBJ);
+
+            if($user && bcrypt_verify_password($password, $user->hashed_password)){
 
                 //Get databse element sous forme d'obejts
-                $user = $q->fetch(PDO::FETCH_OBJ);
                 $_SESSION['user_id'] = $user->id;
                 $_SESSION['pseudo'] = $user->pseudo;
                 $_SESSION['email'] = $user->email;

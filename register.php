@@ -1,7 +1,7 @@
 <?php
     session_start(); 
 
-    require 'filters/auth_filter.php';
+    // require 'filters/auth_filter.php';
     include "config/database.php";
     include "includes/functions.php";
     include "includes/constant.php";
@@ -42,6 +42,7 @@
             if(count($errors) == 0){
                 $to = $email;
                 $subject = WEBSITE_NAME." - ACCOUNT ACTIVATION";
+                $password = bcrypt_hash_password($password);
                 $token = sha1($pseudo.$email.$password);
 
                 ob_start();

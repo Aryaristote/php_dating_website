@@ -20,12 +20,31 @@
         }
     }
 
-    // Check is the user has logged in, to change menu option show up
+    //Check is the user has logged in, to change menu option show up
     // if(!function_exists('is_logged_in')){
     //     function is_logged_in(){
     //          if(isset($_SESSION['user_id']) || isset($_SESSION['pseudo']));
     //     }
     // }
+
+    // Hashing the user password
+    if(!function_exists('bcrypt_hash_password')){
+        function bcrypt_hash_password($value, $options = array()){
+            $cost = isset($options['rounds']) ? $options['rounds']: 10;
+            $hash = password_hash($value, PASSWORD_BCRYPT, array('cost' => $cost));
+            if($hash ===  false){
+                throw new Exception("BCrypt Hashing is not supported");
+            }
+            return $hash;
+        }
+    }
+
+    // Verify the password
+    if(!function_exists('bcrypt_verify_password')){
+        function bcrypt_verify_password($value, $hashingValue){
+            return password_verify($value, $hashingValue);
+        }
+    }
 
     // Create avatar for user and link to the user email
     if(!function_exists('get_avatar_url')){

@@ -1,6 +1,30 @@
-<?php 
-  $title = 'Register'; 
-?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/animate.css">
+  <link rel="stylesheet" href="assets/css/flaticon.css">
+  <link rel="stylesheet" href="assets/css/magnific-popup.css">
+  <link rel="stylesheet" href="assets/css/odometer.css">
+  <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
+  <link rel="stylesheet" href="assets/css/owl.theme.default.min.css">
+  <link rel="stylesheet" href="assets/css/nice-select.css">
+  <link rel="stylesheet" href="assets/css/jquery.animatedheadline.css">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+  <!-- <link rel="stylesheet" href="assets/css/dark.css"> -->
+
+  <link rel="shortcut icon" href="assets/images/favicon.png" type="image/x-icon">
+
+  <title><?= $title = 'Register' ?></title>
+
+
+</head>
 
 <!-- ==========Preloader========== -->
   <div class="preloader">
@@ -19,28 +43,30 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-5">
-            <a href="index.php" class="backto-home"><i class="fas fa-chevron-left"></i> Back to Home</a>
+            <a href="index.php" class="backto-home"><i class="fas fa-chevron-left"></i> Home</a>
           </div>
           <div class="col-lg-7 ">
             <div class="logo">
-              <img src="../assets/images/logo2.png" alt="logo">
+              <img src="../assets/images/logo/someone_logo.png" alt="logo" width="70">
             </div>
           </div>
         </div>
       </div>
     </div>
     <div class="container">
-      <div class="row justify-content-center">
-        <div class="image">
+      <div class="row justify-content-end">
+        <div class="image image-log">
         </div>
         <div class="col-lg-7">
           <div class="log-reg-inner">
-            <div class="section-header">
-              <p>Let's create your profile! Just fill in the fields below, and we’ll get a new account.</p>
+            <div class="section-header inloginp">
+              <h2 class="title">
+              Let's create your profile! Just fill in the fields below, and u’ll get a new ccount
+              </h2>
             </div>
-            <div class="main-content">
-              <div class="section-header">
-                <?php include('partials/_errors.php') ?>
+            <div class="main-content inloginp">
+              <div class="col-lg-12">
+                <?php include './partials/_flash.php'; ?>
               </div>
               <form data-parsley-validate action="#" method="POST">
                 <div class="form-group">
