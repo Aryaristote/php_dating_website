@@ -1,5 +1,5 @@
 <?php
-    session_start(); 
+    session_start();
 
     require 'filters/guest_filter.php';
     include "config/database.php";
@@ -11,8 +11,8 @@
         if(not_empty(['identifiant', 'password'])){
             extract($_POST);
             
-            $q = $db->prepare('SELECT id, pseudo, password AS hashed_password email FROM 
-                                users WHERE (pseudo = :identifiant OR email = :identifiant) AND active = : "1"');
+            $q = $db->prepare("SELECT id, pseudo, password AS hashed_password, email FROM 
+                                users WHERE (pseudo = :identifiant OR email = :identifiant)");
             $q->execute([
                 'identifiant' => $identifiant,
             ]);

@@ -64,7 +64,7 @@
                     'password' => $password,
                 ]);
 
-                redirect("index.php");
+                redirect("login.php");
             }else{
                 save_input_data();
             }

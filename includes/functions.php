@@ -32,7 +32,8 @@
         function bcrypt_hash_password($value, $options = array()){
             $cost = isset($options['rounds']) ? $options['rounds']: 10;
             $hash = password_hash($value, PASSWORD_BCRYPT, array('cost' => $cost));
-            if($hash ===  false){
+
+            if($hash === false){
                 throw new Exception("BCrypt Hashing is not supported");
             }
             return $hash;
@@ -41,8 +42,8 @@
 
     // Verify the password
     if(!function_exists('bcrypt_verify_password')){
-        function bcrypt_verify_password($value, $hashingValue){
-            return password_verify($value, $hashingValue);
+        function bcrypt_verify_password($value, $hashedgValue){
+            return password_verify($value, $hashedgValue);
         }
     }
 
