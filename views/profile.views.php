@@ -178,8 +178,8 @@
                     <div class="profile-main-content">
                         <ul class="top-menu">
                             <li>
-                                <a href="single-profile.html">
-                                    Activity 
+                                <a href="user_setting.php">
+                                    Edit Profile
                                 </a>
                             </li>
                             <li>

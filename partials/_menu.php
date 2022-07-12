@@ -14,7 +14,7 @@
             </div>
             <ul class="menu">
                 <li>
-                    <a class="<?= ($activePage == 'index') ? 'active':''; ?>" href="index.php">Home</a>
+                    <a class="<?= ($activePage == 'list user') ? 'active':''; ?>" href="list_users.php">Seek Partner</a>
                 </li>
                 <?php if(isset($_SESSION['user_id']) || isset($_SESSION['pseudo'])): ?>
                     <div class="dropdown">
@@ -24,9 +24,9 @@
                         <div class="dropdown-menu">
                             <a class="dropdown-item" href="profile.php">Profile</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="logout.php"><i class="fa fa-logout"></i> Log out</a>
+                            <a class="dropdown-item" href="user_setting.php">Edit User</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Another action</a>
+                            <a class="dropdown-item" href="logout.php"><i class="fa fa-logout"></i> Log out</a>
                         </div>
                     </div>
                 <?php else: ?>

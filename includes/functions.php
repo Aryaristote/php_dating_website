@@ -47,6 +47,21 @@
         }
     }
 
+    // Redirect the user if want to access to a given page before login 
+    // ***************** NOT WORKING FOR NOW *******************
+    if(!function_exists('redirect_to')){
+        function redirect_to($default_url){
+            if($_SESSION['forwarding_url']){
+                $url = $_SESSION['forwarding_url'];
+            }else{
+                $url = $default_url;
+            }
+
+            $_SESSION['forwarding_url'] = null;
+            redirect($url);
+        }
+    }
+
     // Create avatar for user and link to the user email
     if(!function_exists('get_avatar_url')){
         function get_avatar_url($email, $size = 50){

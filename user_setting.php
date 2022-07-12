@@ -6,14 +6,14 @@
     require 'includes/functions.php';
     require 'includes/constant.php';
 
-    if(!empty($_GET['id'])){
+    if(!empty($_GET['id']) && $_GET['id'] === get_session('user_id')){
         $user = find_user_by_id($_GET['id']);
 
         if(!$user){
-            redirect('user_setting.php?id='.get_session('user_id'));
+            redirect('index.php');
         }
     }else{
-        redirect('user_setting.php?id='.get_session('user_id'));
+        redirect('profile.php?id='.get_session('user_id'));
     }
 
     if(isset($_POST['update'])){

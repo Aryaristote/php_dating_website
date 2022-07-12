@@ -3103,6 +3103,10 @@ input[type=submit] {
 }
 .latest-registered-section .registered-slider .single-slider {
   text-align: center;
+  color: white;
+}
+.latest-registered-section .registered-slider .single-slider:hover {
+  opacity: 0.6;
 }
 .latest-registered-section .registered-slider .single-slider .img {
   position: relative;
@@ -3506,7 +3510,7 @@ input[type=submit] {
 
 /* Community-Section Starts Here */
 .community-section {
-  padding: 118px 0px 120px;
+  padding: 10px 0px 120px;
 }
 .community-section .section-header {
   margin-bottom: 40px;
@@ -4934,6 +4938,17 @@ input[type=submit] {
   font-size: 16px;
   line-height: 26px;
 }
+
+.pagination_btn{
+  position: absolute;
+  /* top: -3em; */
+  margin-top: -10px;
+}
+.pagination_btn i{
+  position: relative;
+  bottom: -1.4em;
+}
+
 .profile-section .profile-main-content .profile-friends .single-friend {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -4946,6 +4961,7 @@ input[type=submit] {
 .profile-section .profile-main-content .profile-friends .single-friend img {
   max-width: 80px;
   margin-right: 20px;
+  border-radius: 10px;
 }
 .profile-section .profile-main-content .profile-friends .single-friend .content {
   -webkit-box-flex: 1;
@@ -5167,7 +5183,7 @@ input[type=submit] {
 
 /*  Community Section Start */
 .community-section.inner-page .top-filter {
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  /* border-top: 1px solid rgba(0, 0, 0, 0.1); */
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   margin-bottom: 30px;
   display: -webkit-box;
@@ -5224,7 +5240,7 @@ input[type=submit] {
 .community-section.inner-page .top-filter .right .filter-right .nice-select .current {
   font-size: 12px;
   text-transform: uppercase;
-  line-height: 12px;
+  line-height: 34px;
 }
 .community-section.inner-page .top-filter .right .filter-right .nice-select ul {
   display: block;

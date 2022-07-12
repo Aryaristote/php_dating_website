@@ -11,7 +11,7 @@
                     <h1 class="main-title wow fadeInLeft">
                         Find Love
                         Your Life
-                        <button class="custom-button"><a href="login.html">Join Now!</a></button>
+                        <button class="custom-button"><a href="register.php">Join Now!</a></button>
                     </h1>
                 </div>
             </div>
@@ -95,7 +95,7 @@
                             </p>
                         </div>
                         
-                        <a href="#" class="custom-button">Seek Your Partner</a>
+                        <a href="list_users.php" class="custom-button">Seek Your Partner</a>
                     </div>
                 </div>
                 <div class="col-lg-6 align-self-center">
@@ -132,84 +132,21 @@
                 </div>
                     <div class="col-lg-8">
                         <div class="registered-slider2 owl-carousel">
-                            <div class="single-slider">
-                                <div class="img">
-                                    <img src="../assets/images/registered/p1.png" alt="">
-                                </div>
-                                <div class="inner-content">
-                                    <h4 class="name">
-                                        Dana Miles
-                                    </h4>
-                                    <p>
-                                        25 Years Old
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="single-slider">
-                                <div class="img">
-                                    <img src="../assets/images/registered/p2.png" alt="">
-                                </div>
-                                <div class="inner-content">
-                                    <h4 class="name">
-                                        Dana Miles
-                                    </h4>
-                                    <p>
-                                        25 Years Old
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="single-slider">
-                                <div class="img">
-                                    <img src="../assets/images/registered/p3.png" alt="">
-                                </div>
-                                <div class="inner-content">
-                                    <h4 class="name">
-                                        Dana Miles
-                                    </h4>
-                                    <p>
-                                        25 Years Old
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="single-slider">
-                                <div class="img">
-                                    <img src="../assets/images/registered/p4.png" alt="">
-                                </div>
-                                <div class="inner-content">
-                                    <h4 class="name">
-                                        Dana Miles
-                                    </h4>
-                                    <p>
-                                        25 Years Old
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="single-slider">
-                                <div class="img">
-                                    <img src="../assets/images/registered/p5.png" alt="">
-                                </div>
-                                <div class="inner-content">
-                                    <h4 class="name">
-                                        Dana Miles
-                                    </h4>
-                                    <p>
-                                        25 Years Old
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="single-slider">
-                                <div class="img">
-                                    <img src="../assets/images/registered/p1.png" alt="">
-                                </div>
-                                <div class="inner-content">
-                                    <h4 class="name">
-                                        Dana Miles
-                                    </h4>
-                                    <p>
-                                        25 Years Old
-                                    </p>
-                                </div>
-                            </div>
+                            <?php foreach($users as $user): ?>
+                                <a href="profile.php?id=<?= $user->id ?>" class="single-slider">
+                                    <div class="img">
+                                        <img src="<?= get_avatar_url(get_session('email')) ?>">
+                                    </div>
+                                    <div class="inner-content">
+                                        <h4 class="name">
+                                            <?= e($user->pseudo." ".$user->name ) ?>
+                                        </h4>
+                                        <p>
+                                        <?= e($user->country) ?>
+                                        </p>
+                                    </div>
+                                </a>
+                            <?php endforeach ?>
                         </div>
                     </div>
             </div>
@@ -334,7 +271,7 @@
                             </h2>
                         </div>
                         
-                        <a href="#" class="custom-button">Join Now !</a>
+                        <a href="register.php" class="custom-button">Join Now !</a>
                     </div>
                 </div>
             </div>

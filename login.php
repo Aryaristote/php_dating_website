@@ -22,11 +22,12 @@
             if($user && bcrypt_verify_password($password, $user->hashed_password)){
 
                 //Get databse element sous forme d'obejts
+                
                 $_SESSION['user_id'] = $user->id;
                 $_SESSION['pseudo'] = $user->pseudo;
                 $_SESSION['email'] = $user->email;
 
-                redirect('profile.php?id='.$user->id);
+                redirect_to('profile.php?id='.$user->id);
             }else{
                 set_flash('Wrong user name or Password','danger');
                 save_input_data();
