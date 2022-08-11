@@ -4282,7 +4282,7 @@ input[type=submit] {
 
 /*  Profile Section Start */
 .profile-section {
-  padding: 120px 0px 120px;
+  padding: 15px 0px 120px;
 }
 .profile-section .left-profile-area .profile-about-box {
   border-radius: 10px;
@@ -4657,10 +4657,10 @@ input[type=submit] {
 }
 .profile-section .profile-main-content .write-post-area .write-area img {
   position: absolute;
-  width: 40px;
-  height: 40px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
-  top: 0px;
+  top: -10px;
   left: 0px;
 }
 .profile-section .profile-main-content .write-post-area .write-area textarea {
@@ -4699,6 +4699,7 @@ input[type=submit] {
   -webkit-text-fill-color: transparent;
   background-image: -o-linear-gradient(284deg, #f22876 0%, #942dd9 100%);
   background-image: linear-gradient(166deg, #f22876 0%, #942dd9 100%);
+  margin-top: 6px;
 }
 .profile-section .profile-main-content .write-post-area .submit-area .left .select-area {
   display: inline-block;
@@ -4722,7 +4723,7 @@ input[type=submit] {
 .profile-section .profile-main-content .write-post-area .submit-area .left .select-area .nice-select .current {
   font-size: 12px;
   text-transform: uppercase;
-  line-height: 12px;
+  line-height: 28px;
 }
 .profile-section .profile-main-content .write-post-area .submit-area .left .select-area .nice-select ul {
   display: block;
@@ -4789,6 +4790,7 @@ input[type=submit] {
   background-image: -o-linear-gradient(284deg, #f22876 0%, #942dd9 100%);
   background-image: linear-gradient(166deg, #f22876 0%, #942dd9 100%);
   font-size: 10px;
+  margin-top: 3px;
 }
 .profile-section .profile-main-content .profile-single-post .p-s-p-header-area .usewrname {
   margin-left: 10px;
@@ -4851,7 +4853,7 @@ input[type=submit] {
 .profile-section .profile-main-content .profile-single-post .p-s-p-content-footer .right .nice-select .current {
   font-size: 12px;
   text-transform: uppercase;
-  line-height: 12px;
+  line-height: 28px;
 }
 .profile-section .profile-main-content .profile-single-post .p-s-p-content-footer .right .nice-select ul {
   display: block;
@@ -4881,6 +4883,7 @@ input[type=submit] {
   -webkit-text-fill-color: transparent;
   background-image: -o-linear-gradient(284deg, #f22876 0%, #942dd9 100%);
   background-image: linear-gradient(166deg, #f22876 0%, #942dd9 100%);
+  margin-top: 6px;
 }
 .profile-section .profile-main-content .load-more {
   border-radius: 50px;

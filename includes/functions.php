@@ -106,7 +106,7 @@
         }
     }
 
-    //Activate the flash message for wrong of success notification
+    //Activate the flash message for wrong or success notification
     if(!function_exists('set_flash')){
         function set_flash($message, $type = 'info'){
             $_SESSION['notification']['message'] = $message;

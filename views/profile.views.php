@@ -1,6 +1,6 @@
 <?php 
-  $title = 'Profile';
-  require './partials/_menu.php';
+    $title = 'Profile';
+    require './partials/_menu.php';
 ?>
 <!-- ==========Preloader========== -->
     <div class="preloader">
@@ -43,7 +43,7 @@
                     </li>
 
                     <li>
-                        Single Profile
+                        Edit Profile
                     </li>
                 </ul>
                 <div class="right">
@@ -67,7 +67,7 @@
                             <div class="top-bg"></div>
                             <div class="p-inner-content">
                                 <div class="profile-img">
-                                    <img src="<?= get_avatar_url(get_session('email'), 120) ?>" alt="Profile image for <?= get_session('email') ?>">
+                                    <img src="<?= get_avatar_url(get_session('email'), 120) ?> ">
                                     <div class="active-online"></div>
                                 </div>
                                 <h5 class="name">
@@ -174,234 +174,125 @@
                         </div>
                     </div>
                 </div>
+                <!-- Center block -->
                 <div class="col-xl-5 col-lg-6">
                     <div class="profile-main-content">
-                        <ul class="top-menu">
-                            <li>
-                                <a href="user_setting.php">
-                                    Edit Profile
-                                </a>
-                            </li>
-                            <li>
-                                <a href="single-profile2.html" class="active">
-                                    Profile 
-                                </a>
-                            </li>
-                            <li>
-                                <a href="single-profile3.html">
-                                    Friends  
-                                    <div class="num">04</div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="profile-notfound.html">
-                                    Groups 
-                                    <div class="num">14</div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="profile-notfound.html">
-                                    Media 
-                                    <div class="num">47</div>
-                                </a>
-                            </li>
-                        </ul>
-                        <div class="col-lg-12">
-                            <?php include './partials/_flash.php '?>
-                        </div>
-                        <div class="info-box">
-                            <div class="header">
-                                <h4 class="title">
-                                    Base
-                                </h4>
+                        <?php if(!empty($_GET['id']) && $_GET['id'] === get_session('user_id')):?>
+                            <div class="write-post-area">
+                                <form action="microposts.php" method="post" class="write-area">
+                                    <img src="<?= get_avatar_url(get_session('email')) ?>">
+                                    <textarea minlength="5" maxlength="200" required="required" name="content" id="content" placeholder="What's on your mind,Vernon"></textarea>
+                                
+                                    <div class="submit-area">
+                                        <div class="left">
+                                            <a href="#" class="upload-btn">
+                                                <i class="fas fa-paperclip"></i>
+                                            </a>
+                                            <div class="select-area">
+                                                <select class="nice-select select-bar">
+                                                    <option value="">Public</option>
+                                                    <option value="">Friends</option>
+                                                    <option value="">Onlu me</option>
+                                                </select>
+                                            </div>
+                                            
+                                        </div>
+                                        <div class="right">
+                                            <input type="submit" name="publish" class="custom-button" value="Post">
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
-                            <div class="content">
-                                <ul class="infolist">
-                                    <li>
-                                        <span>
-                                            Name
-                                        </span>
-                                        <span>
-                                        <?= e($user->pseudo. " ".$user->name) ?>
-                                        </span>
-                                    </li>
-                                    <li>
-                                        <span>
-                                            Account Creation date
-                                        </span>
-                                        <span>
-                                            <!-- <?= $user->created_at ?> -->
-                                            Empty ************
-                                        </span>
-                                    </li>
-                                    <li>
-                                        <span>
-                                            I am a
-                                        </span>
-                                        <span>
-                                            <?= $user->sex ?>
-                                        </span>
-                                    </li>
-                                    <li>
-                                        <span>
-                                            Marital status
-                                        </span>
-                                        <span>
-                                            <!-- <?= $user->available_for_date ?> -->
-                                            Empty***************
-                                        </span>
-                                    </li>
-                                    <?php if($user->country): ?>
-                                    <li>
-                                        <span>
-                                            Country
-                                        </span>
-                                        <span>
-                                        <?= $user->country ? e($user->country): 'Not Set' ?>
-                                        </span>
-                                    </li>
-                                    <?php endif; ?>
-                                    <?php if($user->city): ?>
-                                    <li>
-                                        <span>
-                                            City
-                                        </span>
-                                        <span>
-                                        <?= $user->city ? e($user->city): 'Not Set'?>
-                                        </span>
-                                    </li>
-                                    <?php endif; ?>
-                                </ul>
+                            <?php endif ?>
+                            <?php if(count($microposts) != 0): ?>
+                                <?php foreach($microposts as $micropost): ?>
+                                    <?php include "partials/_microposts.php" ?>
+                                <?php endforeach ?>
+                            <?php elseif(count($microposts) == 0): ?>
+                            <div class="info-box">
+                                <div class="header">
+                                    <h4 class="title">
+                                        Base
+                                    </h4>
+                                </div>
+                                <div class="content">
+                                    <ul class="infolist">
+                                        <li>
+                                            <span>
+                                                Name
+                                            </span>
+                                            <span>
+                                                <?= e($user->name)." ".e($user->pseudo) ?>
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <span>
+                                                Birthday
+                                            </span>
+                                            <span>
+                                                1998-01-19
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <span>
+                                                I am a
+                                            </span>
+                                            <span>
+                                                <?= e($user->sex) ?>
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <span>
+                                                Looking for a
+                                            </span>
+                                            <span>
+                                                Woman
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <span>
+                                                Avaulable for date
+                                            </span>
+                                            <span>
+                                                single
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <span>
+                                                Country
+                                            </span>
+                                            <span>
+                                                <?= e($user->country) ?>
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <span>
+                                                Town
+                                            </span>
+                                            <span>
+                                                <?= e($user->city) ?>
+                                            </span>
+                                        </li>
+                                    </ul>
+                                </div>  
                             </div>
-                        </div>
-                        <div class="info-box">
-                            <div class="header">
-                                <h4 class="title">
-                                    Myself Summary
-                                </h4>
+                            <div class="info-box">
+                                <div class="header">
+                                    <h4 class="title">
+                                        Myself Summary
+                                    </h4>
+                                </div>
+                                <div class="content">
+                                    <p class="text">
+                                        I don`t like talk too much to be honest and especially about myself. I am man of actions, I do a lot of sports, I adore to travel and to see the world.
+                                    </p>
+                                </div>
                             </div>
-                            <div class="content">
-                                <p class="text">
-                                    <?= $user->bio ? nl2br(e($user->bio)) : 'Not Set' ?>
-                                </p>
-                            </div>
-                        </div>
-                        <div class="info-box">
-                            <div class="header">
-                                <h4 class="title">
-                                    Lifestyle & Social media
-                                </h4>
-                            </div>
-                            <div class="content">
-                                <ul class="infolist">
-                                    <li>
-                                        <span>
-                                            Twitter
-                                        </span>
-                                        <span>
-                                            <?=
-                                                $user->twitter ? '<a href="//twitter.com/'.e($user->twitter).'">@'.e($user->twitter).'</a>' : '';
-                                            ?>
-                                        </span>
-                                    </li>
-                                    <li>
-                                        <span>
-                                            GitHub
-                                        </span>
-                                        <span>
-                                            <?=
-                                                $user->github ? '<a href="//github.com/'.e($user->github).'">@'.e($user->github).'</a>' : '';
-                                            ?>
-                                        </span>
-                                    </li>
-                                    <li>
-                                        <span>
-                                            Looking for
-                                        </span>
-                                        <span>
-                                            Just friends
-                                        </span>
-                                    </li>
-                                    <li>
-                                        <span>
-                                            Smoking
-                                        </span>
-                                        <span>
-                                            Never
-                                        </span>
-                                    </li>
-                                    <li>
-                                        <span>
-                                            Language
-                                        </span>
-                                        <span>
-                                            English 
-                                        </span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="info-box">
-                            <div class="header">
-                                <h4 class="title">
-                                    Physical
-                                </h4>
-                            </div>
-                            <div class="content">
-                                <ul class="infolist">
-                                    <li>
-                                        <span>
-                                            Height
-                                        </span>
-                                        <span>
-                                            5’10
-                                        </span>
-                                    </li>
-                                    <li>
-                                        <span>
-                                            Weight
-                                        </span>
-                                        <span>
-                                            71
-                                        </span>
-                                    </li>
-                                    <li>
-                                        <span>
-                                            Hair Color
-                                        </span>
-                                        <span>
-                                            Black
-                                        </span>
-                                    </li>
-                                    <li>
-                                        <span>
-                                            Eye Color
-                                        </span>
-                                        <span>
-                                            Brown
-                                        </span>
-                                    </li>
-                                    <li>
-                                        <span>
-                                            Body Type
-                                        </span>
-                                        <span>
-                                            Tall
-                                        </span>
-                                    </li>
-                                    <li>
-                                        <span>
-                                            Ethnicity
-                                        </span>
-                                        <span>
-                                            Middle Eastern
-                                        </span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
+                            <a href="#" class="load-more">Load More Detais..</a>
+                        <?php endif ?>
                     </div>
                 </div>
+                <!-- Right block -->
                 <div class="col-xl-3 col-lg-5 col-md-7">
                     <div class="profile-aside-area">
                         <div class="other-profile">
@@ -414,12 +305,12 @@
                                 <div class="p-u-p-list-slider owl-carousel">
                                     <div class="slider-item">
                                         <div class="p-u-p-list">
-                                            <div class="my-col">
-                                                <div class="img">
-                                                    <img src="assets/images/profile/op-img1.png" alt="">
-                                                    <a href="#" class="light-box mfp-iframe"><i class="fas fa-plus"></i></a>
+                                                <div class="my-col">
+                                                    <div class="img">
+                                                        <img src="assets/images/profile/op-img1.png" alt="">
+                                                        <a href="#" class="light-box mfp-iframe"><i class="fas fa-plus"></i></a>
+                                                    </div>
                                                 </div>
-                                            </div>
                                             <div class="my-col">
                                                 <div class="img">
                                                     <img src="assets/images/profile/op-img2.png" alt="">

@@ -1,9 +1,9 @@
 <?php
     session_start();
 
+    include "includes/functions.php";
     require 'filters/guest_filter.php';
     include "config/database.php";
-    include "includes/functions.php";
     include "includes/constant.php";
     // include "partials/success.php";
 
@@ -27,7 +27,7 @@
                 $_SESSION['pseudo'] = $user->pseudo;
                 $_SESSION['email'] = $user->email;
 
-                redirect_to('profile.php?id='.$user->id);
+                redirect('profile.php?id='.$user->id);
             }else{
                 set_flash('Wrong user name or Password','danger');
                 save_input_data();

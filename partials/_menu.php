@@ -19,7 +19,7 @@
                 <?php if(isset($_SESSION['user_id']) || isset($_SESSION['pseudo'])): ?>
                     <div class="dropdown">
                         <a type="button" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <img src="<?= get_avatar_url(get_session('email')) ?>" alt="Profile image for <?= get_session('speudo') ?>">
+                            <img src="<?= get_avatar_url(get_session('email')) ?>" alt="Profile">
                         </a>
                         <div class="dropdown-menu">
                             <a class="dropdown-item" href="profile.php">Profile</a>

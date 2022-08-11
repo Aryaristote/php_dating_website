@@ -1,9 +1,9 @@
 <?php
     session_start();
 
+    require 'includes/functions.php';
     require 'filters/auth_filter.php';
     require 'config/database.php';
-    require 'includes/functions.php';
     require 'includes/constant.php';
 
     if(!empty($_GET['id']) && $_GET['id'] === get_session('user_id')){
@@ -13,7 +13,7 @@
             redirect('index.php');
         }
     }else{
-        redirect('profile.php?id='.get_session('user_id'));
+        redirect('user_setting.php?id='.get_session('user_id'));
     }
 
     if(isset($_POST['update'])){
