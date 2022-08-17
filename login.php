@@ -11,7 +11,7 @@
         if(not_empty(['identifiant', 'password'])){
             extract($_POST);
             
-            $q = $db->prepare("SELECT id, pseudo, password AS hashed_password, email FROM 
+            $q = $db->prepare("SELECT user_id, pseudo, password AS hashed_password, email FROM 
                                 users WHERE (pseudo = :identifiant OR email = :identifiant)");
             $q->execute([
                 'identifiant' => $identifiant,
@@ -23,11 +23,11 @@
 
                 //Get databse element sous forme d'obejts
                 
-                $_SESSION['user_id'] = $user->id;
+                $_SESSION['user_id'] = $user->user_id;
                 $_SESSION['pseudo'] = $user->pseudo;
                 $_SESSION['email'] = $user->email;
 
-                redirect('profile.php?id='.$user->id);
+                redirect('profile.php?id='.$user->user_id);
             }else{
                 set_flash('Wrong user name or Password','danger');
                 save_input_data();

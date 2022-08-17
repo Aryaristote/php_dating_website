@@ -9,8 +9,8 @@
 
     if(isset($_POST['register'])){
         if(not_empty(['name', 'pseudo', 'email', 'password', 'password_confirm'])){
-            $errors = [];
             extract($_POST);
+            $errors = [];
 
             //Check if the input and fill out
             if(mb_strlen($name) < 4){

@@ -74,7 +74,7 @@
                 <?php foreach($users as $user): ?>
                 <div class="col-lg-6">
                     <div class="single-friend">
-                        <a href="profile.php?id=<?= $user->id ?>" class="name">
+                        <a href="profile.php?id=<?= $user->user_id ?>" class="name">
                             <img style="border-radius: 10px;" src="<?= get_avatar_url(get_session('email'), 120) ?>">
                             <div class="content">
                                 <?= e($user->pseudo." ".$user->name ) ?>
@@ -82,9 +82,9 @@
                                     <i class="fas fa-check-circle"></i>
                                 </span>
                                 <p class="date">
-                                    a month ago
+                                    <?= $user->created_at ?>
                                 </p>
-                                <a href="profile.php?id=<?= $user->id ?>" class="connnect-btn">
+                                <a href="profile.php?id=<?= $user->user_id ?>" class="connnect-btn">
                                     Connected
                                 </a>
                             </div>

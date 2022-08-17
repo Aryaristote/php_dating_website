@@ -177,11 +177,23 @@
                 <!-- Center block -->
                 <div class="col-xl-5 col-lg-6">
                     <div class="profile-main-content">
-                        <?php if(!empty($_GET['id']) && $_GET['id'] === get_session('user_id')):?>
+                        <?php if(!empty($_GET['id']) && $_GET['id'] == get_session('user_id')):?>
+                            <?php if(isset($error)): ?>
+                                <div class="alert alert-danger alert-dismissible">
+                                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                                    <?= $error ?>
+                                </div>
+                            <?php elseif(isset($success)): ?>
+                                <div class="alert alert-success alert-dismissible">
+                                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                                    <?= $success ?>
+                                </div>
+                            <?php endif ?>
+
                             <div class="write-post-area">
-                                <form action="microposts.php" method="post" class="write-area">
-                                    <img src="<?= get_avatar_url(get_session('email')) ?>">
-                                    <textarea minlength="5" maxlength="200" required="required" name="content" id="content" placeholder="What's on your mind,Vernon"></textarea>
+                                <form method="POST" class="write-area">
+                                    <img src="<?= get_avatar_url(get_session('id')) ?>">
+                                    <textarea minlength="5" maxlength="200" name="content" id="content" placeholder="What's on your mind,Vernon"></textarea>
                                 
                                     <div class="submit-area">
                                         <div class="left">
@@ -192,7 +204,7 @@
                                                 <select class="nice-select select-bar">
                                                     <option value="">Public</option>
                                                     <option value="">Friends</option>
-                                                    <option value="">Onlu me</option>
+                                                    <option value="">Only me</option>
                                                 </select>
                                             </div>
                                             
@@ -203,12 +215,96 @@
                                     </div>
                                 </form>
                             </div>
-                            <?php endif ?>
-                            <?php if(count($microposts) != 0): ?>
+                        
+                            <?php if(count($microposts) >= 1): ?>
                                 <?php foreach($microposts as $micropost): ?>
-                                    <?php include "partials/_microposts.php" ?>
-                                <?php endforeach ?>
-                            <?php elseif(count($microposts) == 0): ?>
+                                    <div class="profile-single-post">
+                                        <div class="p-s-p-header-area">
+                                            <div class="img">
+                                                <img class="rounded-circle" src="<?= get_avatar_url($user->email) ?>" alt="">
+                                                <div class="active-online"></div>
+                                            </div>
+                                            <h6 class="name">
+                                                <?= e($user->pseudo." ".$user->name) ?>
+                                            </h6>
+                                            <span class="is-varify">
+                                                <i class="fas fa-check"></i>
+                                            </span>
+                                            <span class="post-time">
+                                                <?= nl2br(e($micropost->created_at)) ?>
+                                            </span>
+                                        </div>
+                                        <div class="p-s-p-content">
+                                            <p>
+                                                <?= nl2br(e($micropost->content)) ?>
+                                            </p>
+                                        </div>
+                                        <div class="p-s-p-content-footer">
+                                            <div class="left">
+                                                <a href="#" class="comment">Comment</a>
+                                                <a href="#" class="link"><i class="far fa-star"></i></a>
+                                            </div>
+                                            <div class="right">
+                                                <a href="#" class="link"><i class="far fa-star"></i></a>
+                                                <select class="nice-select select-bar">
+                                                    <option value="">ALL</option>
+                                                    <option value="">NEW</option>
+                                                    <option value="">OLD</option>
+                                                    <option value="">POPULAR</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                 <?php endforeach ?>
+                            <?php endif ?>
+                        <?php endif ?>
+                        
+                        <?php if(!empty($_GET['id']) && $_GET['id'] != get_session('user_id')):?>
+                            <?php if(count($microposts) >= 1): ?>
+                                <?php foreach($microposts as $micropost): ?>
+                                    <div class="profile-single-post">
+                                        <div class="p-s-p-header-area">
+                                            <div class="img">
+                                                <img class="rounded-circle" src="<?= get_avatar_url($user->email) ?>" alt="">
+                                                <div class="active-online"></div>
+                                            </div>
+                                            <h6 class="name">
+                                                <?= e($user->pseudo." ".$user->name) ?>
+                                            </h6>
+                                            <span class="is-varify">
+                                                <i class="fas fa-check"></i>
+                                            </span>
+                                            <span class="post-time">
+                                                <?= nl2br(e($micropost->created_at)) ?>
+                                            </span>
+                                        </div>
+                                        <div class="p-s-p-content">
+                                            <p>
+                                                <?= nl2br(e($micropost->content)) ?>
+                                            </p>
+                                        </div>
+                                        <div class="p-s-p-content-footer">
+                                            <div class="left">
+                                                <a href="#" class="comment">Comment</a>
+                                                <a href="#" class="link"><i class="far fa-star"></i></a>
+                                            </div>
+                                            <div class="right">
+                                                <a href="#" class="link"><i class="far fa-star"></i></a>
+                                                <select class="nice-select select-bar">
+                                                    <option value="">ALL</option>
+                                                    <option value="">NEW</option>
+                                                    <option value="">OLD</option>
+                                                    <option value="">POPULAR</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                 <?php endforeach ?>
+                            <?php endif ?>
+                        <?php endif ?>
+
+                        <?php if(count($microposts) == 0):?>
+                            <p class="text-center">This user has not a post yet</p>
                             <div class="info-box">
                                 <div class="header">
                                     <h4 class="title">

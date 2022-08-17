@@ -1138,6 +1138,19 @@ input[type=submit] {
           box-shadow: 1px 10px 20px 0px rgba(12, 78, 165, 0.43);
 }
 
+.change-img .image-input {
+  position: absolute;
+  left: 5em;
+  width: 180px;
+  opacity: 0;
+}
+.custom-button:hover {
+  color: #fff;
+  -webkit-box-shadow: 1px 10px 20px 0px rgba(12, 78, 165, 0.43);
+          box-shadow: 1px 10px 20px 0px rgba(12, 78, 165, 0.43);
+}
+
+
 .submit-btn1{
   background-image: -o-linear-gradient(284deg, #f22876 0%, #942dd9 100%);
   background-image: linear-gradient(166deg, #f22876 0%, #942dd9 100%);

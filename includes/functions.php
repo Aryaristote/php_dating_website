@@ -70,10 +70,10 @@
     }
 
     if(!function_exists('find_user_by_id')){
-        function find_user_by_id($id){
+        function find_user_by_id($user_id){
             global $db;
-            $q = $db->prepare("SELECT name, pseudo, email, city, country, twitter, github, sex, bio FROM users WHERE id= ?");
-            $q->execute([$id]);
+            $q = $db->prepare("SELECT * FROM users WHERE user_id= ?");
+            $q->execute([$user_id]);
             $data = $q->fetch(PDO::FETCH_OBJ);
             $q->closeCursor();
             return $data;
@@ -98,7 +98,7 @@
     if(!function_exists('is_already_in_use')){
         function is_already_in_use($field, $values, $table){
             global $db;
-            $q = $db->prepare("SELECT id FROM $table WHERE $field = ?");
+            $q = $db->prepare("SELECT user_id FROM $table WHERE $field = ?");
             $q->execute([$values]);
             $count = $q->rowCount();
             $q->closeCursor();
@@ -159,7 +159,7 @@
     if(!function_exists('email_exist')){
         function email_exist($field, $values, $table){
             global $db;
-            $q = $db->prepare("SELECT id FROM $table WHERE $field = ?");
+            $q = $db->prepare("SELECT user_id FROM $table WHERE $field = ?");
             $q->execute([$values]);
             $count = $q->rowCount();
             $q->closeCursor();

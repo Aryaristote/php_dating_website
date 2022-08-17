@@ -6,7 +6,8 @@
     require 'includes/constant.php';
 
     //Pagination
-	$req = $db->query('SELECT id FROM users');
+	$req = $db->query('SELECT * FROM users');
+	$users = $req->fetchAll(PDO::FETCH_OBJ);
 	$nbre_total_users = $req->rowCount();
 
 	if($nbre_total_users >= 1){
@@ -30,7 +31,7 @@
 		$limit = 'LIMIT '.($page_num - 1) * $nbre_users_par_page. ',' . $nbre_users_par_page;
 
 		//Cette requête sera utilisée plus tard
-		$q = $db->query("SELECT id, pseudo, name, email FROM users ORDER BY pseudo $limit");
+		$q = $db->query("SELECT * FROM users ORDER BY pseudo $limit");
 		$users = $q->fetchAll(PDO::FETCH_OBJ);
 
 		$pagination = '<div class="col-lg-12"><div class="pagination-area text-center">';

@@ -6,44 +6,66 @@
     require 'config/database.php';
     require 'includes/constant.php';
 
-    if(!empty($_GET['id']) && $_GET['id'] === get_session('user_id')){
+    if(!empty($_GET['id']) && $_GET['id'] === $_SESSION['user_id']){
         $user = find_user_by_id($_GET['id']);
 
         if(!$user){
             redirect('index.php');
         }
     }else{
-        redirect('user_setting.php?id='.get_session('user_id'));
+        redirect('user_setting.php?id='.$_SESSION['user_id']);
     }
 
     if(isset($_POST['update'])){
         $errors = [];
 
 
-        if(not_empty(['pseudo', 'name', 'sex','twitter', 'github', 'available_for_date', 'bio'])){
+        if(not_empty(['pseudo', 'name', 'city', 'country', 'sex', 'twitter', 'github', 'available_for_date', 'bio'])){
             extract($_POST);
 
-            $q = $db->prepare('UPDATE users SET pseudo = :pseudo, name = :name, city = :city, country = :country,  
-                sex = :sex, twitter = :twitter, github = :github, available_for_date = :available_for_date, bio = :bio
-            WHERE id = :id');
+            if(!empty($_FILES)){
+                $file_name = $_FILES['file']['name'];
+                $file_extension = strtolower(strrchr($file_name, "."));
+        
+                $file_tmp_name = $_FILES['file']['tmp_name'];
+                $file_name = md5(uniqid(rand())).$file_extension;
+                $file_dest = 'files/'.$file_name;
+        
+                $allow_extension = array('.jpg', '.jpeg', '.gif', '.png'); 
+
+                if(in_array($file_extension, $allow_extension)){
+                    if(move_uploaded_file($file_tmp_name, $file_dest)){
+    
+                    }
+                }else{
+                    $errors [] = "Wrong formate of the file";
+                }
+            }else{
+                  $errors [] = "Select a given file";
+            }
+
+            $q = $db->prepare('UPDATE users SET files_name = :files_name, files_url = :files_url, pseudo = :pseudo, name = :name, city = :city, 
+                country = :country, sex = :sex, twitter = :twitter, github = :github, available_for_date = :available_for_date, bio = :bio
+                WHERE id = :id');
             $q->execute([
+                'files_name' => $file_name,
+                'files_url' => $file_dest,
                 'pseudo' => $pseudo,
                 'name' => $name,
                 'city' => $city,
                 'country' => $country,
+                'sex' => $sex,
                 'twitter' => $twitter,
                 'github' => $github,
-                'sex' => $sex,
                 'available_for_date' => !empty($available_for_date) ? '1' : '0',
                 'bio' => $bio,
-                'id' => get_session('user_id'),
-            ]);
+                'id' => $_GET['id'],
+            ]); 
 
-            // set_flash("Your profile has been updated"); To set flash on edit profile page (it's sould be imported to profile if succeded)
-            redirect('profile.php?id='.get_session('user_id'));
+            redirect('profile.php?id='.$_SESSION['user_id']);
         }else{
-            set_flash("Please, Fill out all input required filds", "danger");
-            // $errors[] = "Please, Fill out all input required filds"; Normally this should work at the place of set_flash
+            $errors [] = "Please, Fill out all input required filds";
+            // set_flash("Please, Fill out all input required filds", "danger");
             save_input_data();   
         }
     }else{
